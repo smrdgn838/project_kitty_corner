@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Dashboard - My Corner</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="nav-bar">
+            <h1 style="color: rgb(196, 136, 196)"><b>Hi, {{user.first_name}}!</b></h1>
+        </div>
+        <div id="links">
+            <a href="/kitty/new" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 10pt;">FIND A KITTY</a>
+            <a href="/logout" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 10pt;">LOGOUT</a>
+        </div>
+        <br><br>
+        <div style="text-align: center;">
+            <a href="/corner_cafe" style="padding: 5px 10px; background-color: rgb(196, 136, 196); color: white; border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 11pt;">Take me to Corner Café!</a>
+        </div>
+        <br><br>
+
+        <h2 style="font-size: 15pt; color:rgb(196, 136, 196);"><u>Your List of Pawsible Pals:</u></h2><br>
+        <div class="content">
+            <table border="1">
+                <thead style="background-color: white;">
+                    <tr style="background-color: white;">
+                        <th style="width: 120px;"><b>Age Range</b></th>
+                        <th style="width: 120px;"><b>Breed</b></th>
+                        <th style="width: 500px;"><b>Personality</b></th>
+                        <th style="width: 500px;"><b>Other pets</b></th>
+                        <th style="width: 180px;"><b>Need to make changes?</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for kitty in user.kitties %}
+                        {% if kitty.age_range != None %}
+                        <tr>
+                            <td style="text-align: center;">{{kitty.age_range}}</td>
+                            <td style="text-align: center;">{{kitty.breed}}</td>
+                            <td style="text-align: center;">{{kitty.personality}}</td>
+                            <td style="text-align: center;">{{kitty.other_pets}}</td>
+                            <td style="text-align: center;">
+                                {% if kitty.user_id == session["user_id"] %}
+                                    <a href="/kitty/edit/{{kitty.id}}">Edit</a> | 
+                                    <a href="/kitty/delete/{{kitty.id}}">Delete</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endif %} 
+                    {% endfor %}  
+                </tbody>
+            </table>  
+        </div> 
+        <br><br><br>
+        <div id="home_logo" style="text-align: center; padding-top: 100px;">
+            <img src="{{ url_for('static', filename='images/paw_heart.png') }}" alt="Paw Heart Image" style="width: 80px; height: auto; text-align: center;">
+        </div>
+    </div>
+</body>
+</html>
+
+
+        

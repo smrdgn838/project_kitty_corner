@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Welcome to Kitty Corner!</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="nav-bar">
+            <div id="home_logo">
+                <img src="{{ url_for('static', filename='images/paw_heart.png') }}" alt="Paw Heart Image" style="width: 80px; height: auto;">
+                <h1 style="margin-top: 0px;"><b>Welcome to Kitty Corner!</b></h1>
+                <p style="font-size: larger; margin-top: 0px; font-style: italic;">where paws meet hearts</p>
+            </div>
+            
+        </div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for messages in messages %}
+                        <p class="red_text">{{messages}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        
+        <div id="reg-login">
+            <div id="register">
+                <h2 style="font-size: 17pt;">Sign me up!</h2>
+                    <form action="/register" method="POST">
+                        <div>
+                            <label for="last_name">First Name*: 
+                            <input type="text" name="first_name">
+                            </label>
+                        </div>
+                        <div>
+                            <label for="last_name">Last Name*: 
+                            <input type="text" name="last_name">
+                            </label>
+                        </div>
+                        <div>
+                            <label for="email">Email Address*: </label>
+                            <input type="email" name="email"><br>
+                        </div>
+                        <div>
+                            <label for="password">Password*: </label>
+                            <input type="password" name="password">
+                        </div>
+                        <br>
+                        <input type="submit" value="Register" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 11pt;">
+                    </form>
+                    <p style="font-size: 8pt;">*By registering, you are acknowledging that you are over the age of 18.</p>
+            </div>
+                
+            <div id="login">
+                <h2 style="font-size: 17pt;">Log me in!</h2>
+                <form action="/login" method="POST">
+                    <div>
+                        <label for="email">Email Address: </label>
+                        <input type="email" name="email">
+                    </div>
+                    <div>
+                        <label for="password">Password: </label>
+                        <input type="password" name="password">
+                    </div>
+                    <br><br><br>
+                    <input type="submit" value="Login to My Corner" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 11pt;">
+                </form>
+            </div>
+        </div>   
+        <div style="text-align: center; padding-left: 100px;">
+            <img src="{{ url_for('static', filename='images/cat_walking.gif') }}" alt="cat_walking">
+        </div>     
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Corner Café - Pics!</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="nav-bar">
+            <h1 style="color: rgb(196, 136, 196)"><b>Corner Café - Gallery</b></h1>
+            <p style="margin-top: 2px; font-style: italic;">*all kitties pictured were adopted through Kitty Corner*</p>
+        </div>
+        <div id="links">
+            <a href="/corner_cafe" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 10pt;">Corner Café - Main Page</a>
+            <a href="/logout" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 10pt;">LOGOUT</a>
+        </div>  
+        <br><br>
+
+        <h2 style="font-size: 16pt; color:rgb(196, 136, 196);"><b>Scroll for Cuteness!</b></h2>
+
+        <div id="scrollable" style="margin-top: 30px; text-align: center;">
+            <img src="{{ url_for('static', filename='images/me_tonks.jpg') }}" alt="me_tonks">
+            <img src="{{ url_for('static', filename='images/meeko_yoda.jpg') }}" alt="meeko_yoda">
+            <img src="{{ url_for('static', filename='images/tonks_meeko_homes.jpg') }}" alt="tonks_meeko_homes">
+            <img src="{{ url_for('static', filename='images/tonks_yelling.jpg') }}" alt="tonks_yelling">
+            <img src="{{ url_for('static', filename='images/me_meeko.jpg') }}" alt="me_meeko">
+            <img src="{{ url_for('static', filename='images/meeko_harness.jpg') }}" alt="meeko_harness">
+        </div>
+
+        <p style="font-size: 10pt; color: black;">*will eventually add capability for each user to add their own pics</p>
+
+        <div id="home_logo" style="text-align: center; padding-top: 40px;">
+            <img src="{{ url_for('static', filename='images/paw_heart.png') }}" alt="Paw Heart Image" style="width: 80px; height: auto; text-align: center;">
+        </div>
+</body>
+</html>

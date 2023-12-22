@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Edit Submission</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="nav-bar">
+            <h1 style="color: rgb(196, 136, 196);" ><u>Edit Your Submission</u></h1>
+        </div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for messages in messages %}
+                        <p class="red_text">{{messages}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+        <br><br>
+        <div class = box>
+            <form action="/kitty/update"  method="POST">
+                <input type="hidden" name="id" value="{{kitty.id}}">
+
+                <label for="age_range"><b>Age Range:  </b></label>
+                <input type="text" name="age_range" value="{{kitty.age_range}}"><br><br>
+
+                <label for="breed"><b>Breed:  </b></label>
+                <input type="text" name="breed" value="{{kitty.breed}}"><br><br>
+
+                <label for="personality"><b>Personality:  </b></label>
+                <textarea id="personality" name="personality">{{kitty.personality}}</textarea><br><br>
+
+                <label for="other_pets"><b>Other pets?  </b></label>
+                <textarea id="other_pets" name="other_pets">{{kitty.other_pets}}</textarea><br>
+
+                <br><br>
+                <input type="submit" value="Save Edits" style="padding: 5px 10px; background-color: rgb(196, 136, 196); color: white; border-radius: 5px; border: solid 2px gray; font-size: 12pt;"><br> 
+            </form>
+            <br><br><br><br>
+            <a href="/dashboard" style="padding: 5px 10px; background-color: rgb(196, 136, 196); color: white; border-radius: 5px; border: solid 2px gray; font-size: 12pt; text-decoration: none;">CANCEL</a>    
+        </div>
+
+        <br><br>
+        <div id="home_logo" style="text-align: center;">
+            <img src="{{ url_for('static', filename='images/paw_heart.png') }}" alt="Paw Heart Image" style="width: 80px; height: auto; text-align: center;">
+        </div>
+    </div>
+</body>
+</html>

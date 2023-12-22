@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Corner Café</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="nav-bar">
+            <h1 style="color: rgb(196, 136, 196)"><b>Corner Café</b></h1>
+            <p style="margin-top: 2px; font-style: italic;">your favorite feline forum</p>
+        </div>
+        <div id="links">
+            <a href="/dashboard" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 10pt;">Back to MY CORNER</a>
+            <a href="/logout" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 10pt;">LOGOUT</a>
+        </div>
+    
+        <br><br>
+
+    
+        <h2 style="font-size: 15pt; color:rgb(196, 136, 196);"><u>Discussion Topics:</u></h2>
+        <div class="content">
+            <table border="1">
+                <thead style="background-color: white;">
+                    <tr style="background-color: white;">
+                        <th style="width: 400px;"><b>Topic</b></th>
+                        <th style="width: 400px;"><b>Date Posted</b></th>
+                        <th style="width: 400px;"><b>Posted By</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>What does it mean when my cat sits on my head?</td>
+                        <td></td>
+                        <td>hard-coded because I'm not sure how to do this part yet...</td>
+                    </tr>
+                    <tr>
+                        <td>Does my cat think I am also a cat?</td>
+                        <td></td>
+                        <td>something to learn/add for the future :)</td>
+                    </tr>
+                </tbody>
+            </table>  
+        </div> 
+        <br><br><br><br>
+        <div>
+            <a href="/corner_cafe/pix" style="padding: 5px 10px; background-color: rgb(196, 136, 196); color: white; border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 13pt;">I'm just here for the pix</a>
+        </div>
+        </div>
+
+
+        <div id="home_logo" style="text-align: center; padding-top: 100px;">
+            <img src="{{ url_for('static', filename='images/paw_heart.png') }}" alt="Paw Heart Image" style="width: 80px; height: auto; text-align: center;">
+        </div>
+</body>
+</html>

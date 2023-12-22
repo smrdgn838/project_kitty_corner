@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Adopt a Kitty</title>
+</head>
+
+<body>
+    <div id="container">
+        <div id="nav-bar">
+            <h1 style="color: rgb(196, 136, 196)"><b><u>Find a Kitty</b></u></h1>
+            <p style="font-size: 10pt; margin-top: 0px; font-style: italic;">give a kitty a furrever home&hearts;</p>
+        </div>
+        <div id="links">
+            <a href="/dashboard" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 10pt;">DASHBOARD</a>
+            <a href="/dashboard" style="padding: 5px 10px; background-color: white; color: rgb(196, 136, 196); border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 10pt;">LOGOUT</a>
+        </div>
+        <br><br>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for messages in messages %}
+                        <p class="red_text">{{messages}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+    <div class="box">
+        
+        <form action="/kitty/create" method="POST">
+
+            <label for="age_range"><b>Age Range:</b></label>
+            <input type="text" name="age_range" required><br><br>
+
+            <label for="breed"><b>Breed:</b></label>
+            <input type="text" name="breed"  required><br><br>
+
+            <label for="personality"><b>Personality/Quirks:</b></label>
+            <textarea id="personality" name="personality" required></textarea><br>
+
+            <label for="other_pets"><b>Any other pets in the home?</b></label>
+            <textarea id="other_pets" name="other_pets" required></textarea>
+
+            <input type="hidden" name="user_id" value="{{user.id}}">
+            
+            <br><br><br>
+            <input type="submit" value="Find me a beb!" style="padding: 5px 10px; background-color: rgb(196, 136, 196); color: white; border-radius: 5px; border: solid 2px gray; font-size: 12pt;">           
+        </form>
+        
+        <p style="font-size: 10pt;">*Must be over the age of 18 to adopt.</p>
+        
+        <br><br><br>
+        <a href="/dashboard" style="padding: 5px 10px; background-color: rgb(196, 136, 196); color: white; border-radius: 5px; border: solid 2px gray; text-decoration: none; font-size: 12pt;">CANCEL</a>   
+    
+    </div>
+    
+    <br><br>
+    <div id="home_logo" style="text-align: center;">
+        <img src="{{ url_for('static', filename='images/paw_heart.png') }}" alt="Paw Heart Image" style="width: 80px; height: auto; text-align: center;">
+    </div>
+
+</body>
+</html>
+
